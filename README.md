@@ -1,8 +1,8 @@
-
 # Learning Space Partitions for Nearest Neighbor Search #
 
 This is the code for our paper [**Learning Space Partitions for Nearest Neighbor Search**](https://arxiv.org/abs/1901.08544).
-Yihe Dong, Piotr Indyk, Ilya Razenshteyn ilyaraz@microsoft.com , Tal Wagner.
+
+Yihe Dong, Piotr Indyk, Ilya Razenshteyn, Tal Wagner.
 _________________
 
 The code is structured around a few centralized scripts, with additional versatile components that implement a common interface, which can be swapped to run different learning methods. This modular structure allows easy extensibility of our framework to new learning methods.
