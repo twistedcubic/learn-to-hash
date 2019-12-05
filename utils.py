@@ -75,9 +75,9 @@ def parse_args():
     parser.add_argument('--graph_file', default=graph_file, help='file to store knn graph')
 
     parser.add_argument('--glove', default=False, help='whether using glove data')
-    parser.add_argument('--glove_c', default=True, help='whether using glove data')
+    parser.add_argument('--glove_c', default=False, help='whether using glove data')
     parser.add_argument('--sift_c', default=False, help='whether using glove data')
-    parser.add_argument('--sift', default=False, help='whether using SIFT data')
+    parser.add_argument('--sift', default=True, help='whether using SIFT data')
     parser.add_argument('--prefix10m', default=False, help='whether using prefix10m data')
     
     parser.add_argument('--fast_kmeans', default=False, help='whether using fast kmeans, non-sklearn')
