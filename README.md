@@ -52,8 +52,8 @@ If you find our paper and repo useful, please cite as:
 @article{neural_lsh2019,
   title={Learning Space Partitions for Nearest Neighbor Search},
   author={Dong, Yihe and Indyk, Piotr and Razenshteyn, Ilya and Wagner, Tal},
-  howpublished = {https://arxiv.org/abs/1901.08544},
-  year={2019}
+  booktitle={International Conference on Learning Representations},
+  year={2020}
 }
 ```
 
