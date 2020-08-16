@@ -4,12 +4,16 @@ import torch
 import random
 import sys
 import utils
-import _multiprobe
+from model import _multiprobe
 
 import pdb
 
 '''
-Class for cross polytope LSH.
+Class for cross polytope LSH. _multiprobe refers to a python module built from compiled C++ code, 
+that is able to perform multiprobe CP LSH.
+Note, the binary under model directory was built and tested on Linux systems, on other systems
+where it might not work, one can simply run the Makefile here: https://github.com/FALCONN-LIB/FALCONN/tree/multiprobe_test/src/multiprobe_test
+to create a compatible binary.
 '''
 device = utils.device 
 device_cpu = torch.device('cpu')

@@ -9,7 +9,7 @@ The code is structured around a few centralized scripts, with additional versati
 
 # Code layout #
 
-[kahip/kmkahip.py](kahip/kmkahip.py): main backbone for creating knn graphs from dataset, recursively partitioning dataset using KaHIP in parallel, and learning tree of neural networks in tandem with building partitions tree.
+[kahip/kmkahip.py](kahip/kmkahip.py): main backbone for creating knn graphs from dataset, recursively partitioning dataset using [KaHIP](https://github.com/KaHIP/KaHIP) in parallel, and learning tree of neural networks in tandem with building partitions tree.
 
 [workflow_learn_kmeans](workflow_learn_kmeans.py): Main pipeline for running unsupervised learning methods: k-means, PCA, ITQ, random projection.
 
@@ -28,7 +28,7 @@ To change the various configurations, such as adjusting between different learni
 # Prerequisites #
 
 * PyTorch 0.4 or above.
-* KaHIP
+* [KaHIP](https://github.com/KaHIP/KaHIP)
 * scikit-learn (version insensitive)
 * numpy (version insensitive)
 
