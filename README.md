@@ -25,6 +25,18 @@ For any given configuration as specified in utils.py, one can run any script wit
 
 To change the various configurations, such as adjusting between different learning methods or datasets, one can either modify the corresponding options under the parse_args function, or pass them in through the command line.
 
+# Sample Data #
+The various algorithms were designed to have a unified requirement for input data, specifically, they require `dataset`, `queryset`, and `neighbors`, where the `dataset` and `queryset` are `n x d` arrays, where `n` denotes the number of datapoints or queries, respectively, and `d` denotes the datapoint dimension. `neighbors` is an `n x k` array of indices of the `k` nearest neighbors for each query point amongst all datapoints, where `n` denotes the number of queries, and `k` denotes the number of nearest neighbors being sought.
+
+As an example, we provide a [queryset array for GloVe](data/glove_queries.npy).
+
+The dataset array takes the exact same format, and is not contained in this repo due to space limitations. But which can be [downloaded here](https://github.com/erikbern/ann-benchmarks).
+
+The neighbors array can be easily obtained a number of ways, for instance by using the [`utils`](utils.py) function:
+```
+utils.dist_rank(queryset, k=opt.k, data_y=dataset, largest=False)
+```
+
 # Prerequisites #
 
 * PyTorch 0.4 or above.
