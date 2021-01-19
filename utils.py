@@ -71,14 +71,18 @@ def parse_args():
     
     #parser.add_argument('--nn_graph50', default=True, help='Whether to use 50NN graph for partitioning')
     parser.add_argument('--nn_mult', default=5, type=int, help='multiplier for opt.k to create distribution of bins of nearest neighbors during training. For MLCE loss.')
-    parser.add_argument('--data_dir', default=data_dir, help='data dir')
     parser.add_argument('--graph_file', default=graph_file, help='file to store knn graph')
 
+    parser.add_argument('--dataset_name', default='sift', type=str, help='Specify dataset name, can be one of "glove", "sift", "prefix10m",' \
+                        '"glove_c" (quantized glove), "sift_c" (quantized sift), or your customized data with corresponding loader in utils.py ')
+    '''
+    #keeping here for reference in case someone cloned this earlier
     parser.add_argument('--glove', default=False, help='whether using glove data')
-    parser.add_argument('--glove_c', default=False, help='whether using glove data')
-    parser.add_argument('--sift_c', default=False, help='whether using glove data')
+    parser.add_argument('--glove_c', default=False, help='whether using glove quantized data')
+    parser.add_argument('--sift_c', default=False, help='whether using sift quantized data')
     parser.add_argument('--sift', default=True, help='whether using SIFT data')
     parser.add_argument('--prefix10m', default=False, help='whether using prefix10m data')
+    '''
     
     parser.add_argument('--fast_kmeans', default=False, help='whether using fast kmeans, non-sklearn')
     parser.add_argument('--itq', default=False, help='whether using ITQ solver')
@@ -105,6 +109,13 @@ def parse_args():
     parser.add_argument('--lr', default=0.0008, type=float, help='learning rate')    
 
     opt = parser.parse_args()
+
+    opt.glove, opt.sift, opt.glove_c, opt.sift_c, opt.prefix10m = [False]*5
+    if opt.dataset_name in ['glove','sift','glove_c','sift_c','prefix10m']:
+        setattr(opt, opt.dataset_name, True)
+    else:
+        raise Exception('Dataset name must be one of "glove", "sift", "prefix10m",' \
+                        '"glove_c" (quantized glove), or "sift_c" (quantized sift)')
     
     if opt.glove:    
         opt.n_input = 100
@@ -122,9 +133,6 @@ def parse_args():
         print('GloVe data must be normalized! Setting normalize_data to True...')
         opt.normalize_data = True
         
-    if opt.glove and opt.sift:        
-        raise Exception('Must choose only one of opt.glove and opt.sift!')
-    
     if not opt.fast_kmeans^opt.itq:
         #raise Exception('Must choose only one of opt.fast_kmeans and opt.itq!')
         print('NOTE: fast_kmeans and itq options share the same value')
