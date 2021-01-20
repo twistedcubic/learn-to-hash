@@ -20,7 +20,7 @@ from collections import defaultdict
 import kahip_solver
 import kmeans
 from datetime import date
-from itq import itq
+import itq
 
 import torch
 
